@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Inventory App</string>
+    <string name="add_activity">Add Item</string>
+
+    <string name="itemId">ID</string>
+    <string name="itemName">Product Name</string>
+    <string name="itemPrice">Price</string>
+    <string name="itemQuantity">Quantity</string>
+    <string name="SuppName">Supplier Name</string>
+    <string name="SuppPhone">Supplier Phone Number</string>
+
+    <string name="empty_stock">The Stock Is Empty</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_16">
+
+    <TextView
+        android:id="@+id/item_id"
+        style="@style/textStyleListItem" />
+
+    <TextView
+        android:id="@+id/item_name"
+        style="@style/textStyleListItem" />
+
+    <TextView
+        android:id="@+id/item_price"
+        style="@style/textStyleListItem" />
+
+    <TextView
+        android:id="@+id/item_quantity"
+        style="@style/textStyleListItem" />
+
+    <TextView
+        android:id="@+id/supp_name"
+        style="@style/textStyleListItem" />
+
+    <TextView
+        android:id="@+id/supp_phone"
+        style="@style/textStyleListItem" />
+</LinearLayout>

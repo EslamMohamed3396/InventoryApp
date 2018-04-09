@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_16"
+    tools:context="com.example.eslam.inventoryapp.AddingActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/textStyle"
+            android:text="@string/itemName" />
+
+        <TextView
+            style="@style/textStyle"
+            android:text="@string/itemPrice" />
+
+        <TextView
+            style="@style/textStyle"
+            android:text="@string/itemQuantity" />
+
+        <TextView
+            style="@style/textStyle"
+            android:text="@string/SuppName" />
+
+        <TextView
+            style="@style/textStyle"
+            android:text="@string/SuppPhone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/p_name"
+            style="@style/editInputName"
+            android:hint="@string/itemName" />
+
+        <EditText
+            android:id="@+id/p_price"
+            style="@style/editInputNumber"
+            android:drawableRight="@drawable/ic_attach_money"
+            android:hint="@string/itemPrice" />
+
+        <EditText
+            android:id="@+id/p_quantity"
+            style="@style/editInputNumber"
+            android:hint="@string/itemQuantity" />
+
+        <EditText
+            android:id="@+id/supplier_name"
+            style="@style/editInputName"
+            android:hint="@string/SuppName" />
+
+        <EditText
+            android:id="@+id/supplier_phone"
+            style="@style/editInputNumber"
+            android:hint="@string/SuppPhone" />
+    </LinearLayout>
+</LinearLayout>
