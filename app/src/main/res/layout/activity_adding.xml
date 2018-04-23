@@ -32,6 +32,11 @@
         <TextView
             style="@style/textStyle"
             android:text="@string/SuppPhone" />
+
+        <Button
+            android:id="@+id/order_btn"
+            style="@style/btn_style"
+            android:text="@string/order_btn" />
     </LinearLayout>
 
     <LinearLayout
@@ -65,5 +70,11 @@
             android:id="@+id/supplier_phone"
             style="@style/editInputNumber"
             android:hint="@string/SuppPhone" />
+
+        <Button
+            android:id="@+id/sell_btn"
+            style="@style/btn_style"
+            android:text="@string/sell_btn" />
     </LinearLayout>
+
 </LinearLayout>

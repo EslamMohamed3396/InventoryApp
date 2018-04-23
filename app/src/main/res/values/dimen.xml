@@ -3,5 +3,4 @@
     <dimen name="padding_4">4dp</dimen>
     <dimen name="padding_16">16dp</dimen>
     <dimen name="textSize_12">15sp</dimen>
-    <dimen name="textSize_10">10sp</dimen>
 </resources>

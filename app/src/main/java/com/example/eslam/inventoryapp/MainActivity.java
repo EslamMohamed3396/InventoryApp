@@ -1,32 +1,38 @@
 package com.example.eslam.inventoryapp;
 
+import android.app.LoaderManager;
+import android.content.ContentUris;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.eslam.inventoryapp.data.DbStockHelper;
 import com.example.eslam.inventoryapp.data.InventoryContract.StockEntry;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private FloatingActionButton fab;
     private ListView list;
     private TextView txt_empty_stock;
-    private ArrayList<ItemDetails> itemDetails;
-    private DbStockHelper dbStockHelper;
+    private InventoryCursorAdapter mCursorAdapter;
+    private final static int LOADER_NUMBER = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        txt_empty_stock = (TextView) findViewById(R.id.empty_stock);
+
+        list = (ListView) findViewById(R.id.listview);
+
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,63 +41,48 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(GoToAddingActivity);
             }
         });
-        ReadeData();
+
+        list.setEmptyView(txt_empty_stock);
+
+        mCursorAdapter = new InventoryCursorAdapter(this, null);
+
+        list.setAdapter(mCursorAdapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent GoToaddingActivity = new Intent(MainActivity.this, AddingActivity.class);
+                Uri uri = ContentUris.withAppendedId(StockEntry.CONTENT_URI, id);
+                GoToaddingActivity.setData(uri);
+                startActivity(GoToaddingActivity);
+            }
+        });
+
+        getLoaderManager().initLoader(LOADER_NUMBER, null, this);
+
     }
 
     @Override
-    protected void onStart() {
-        ReadeData();
-        super.onStart();
-    }
-
-    private Cursor ReadeData() {
-        dbStockHelper = new DbStockHelper(this);
-
-        SQLiteDatabase db = dbStockHelper.getReadableDatabase();
-
-        txt_empty_stock = (TextView) findViewById(R.id.empty_stock);
-
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] Projection = {StockEntry._ID,
                 StockEntry.COLUMN_STOCK_NAME,
                 StockEntry.COLUMN_STOCK_PRICE,
-                StockEntry.COLUMN_STOCK_QUANTITY,
-                StockEntry.COLUMN_STOCK_SUPPLIER_NAME,
-                StockEntry.COLUMN_STOCK_SUPPLIER_PHONE};
-        Cursor query = db.query(StockEntry.TABLE_NAME, Projection,
-                null,
-                null,
-                null,
+                StockEntry.COLUMN_STOCK_QUANTITY};
+        return new CursorLoader(this,
+                StockEntry.CONTENT_URI,
+                Projection, null,
                 null,
                 null);
-        int ColumnIndexId = query.getColumnIndex(StockEntry.COLUMN_STOCK_ID);
-        int ColumnIndexName = query.getColumnIndex(StockEntry.COLUMN_STOCK_NAME);
-        int ColumnIndexPrice = query.getColumnIndex(StockEntry.COLUMN_STOCK_PRICE);
-        int ColumnIndexQuantity = query.getColumnIndex(StockEntry.COLUMN_STOCK_QUANTITY);
-        int ColumnIndexSuppName = query.getColumnIndex(StockEntry.COLUMN_STOCK_SUPPLIER_NAME);
-        int ColumnIndexSuppPhone = query.getColumnIndex(StockEntry.COLUMN_STOCK_SUPPLIER_PHONE);
-        try {
-            list = (ListView) findViewById(R.id.listview);
-            list.setEmptyView(txt_empty_stock);
-            itemDetails = new ArrayList<>();
+    }
 
-            while (query.moveToNext()) {
-                int Id = query.getInt(ColumnIndexId);
-                String Name = query.getString(ColumnIndexName);
-                int Price = query.getInt(ColumnIndexPrice);
-                int Quantity = query.getInt(ColumnIndexQuantity);
-                String SuppName = query.getString(ColumnIndexSuppName);
-                int SuppPhone = query.getInt(ColumnIndexSuppPhone);
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        mCursorAdapter.swapCursor(data);
+    }
 
-                itemDetails.add(new ItemDetails(Id , Name, Price, Quantity, SuppName, SuppPhone));
-            }
-            ListAdabter listAdabter = new ListAdabter(this, itemDetails);
-            list.setAdapter(listAdabter);
-        } catch (Exception ex) {
-            Log.v("mainactivity", "Error In Read Method : " + ex);
-        } finally {
-            query.close();
-        }
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        mCursorAdapter.swapCursor(null);
 
-        return query;
     }
 }

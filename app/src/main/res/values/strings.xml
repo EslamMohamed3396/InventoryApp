@@ -10,4 +10,10 @@
     <string name="SuppPhone">Supplier Phone Number</string>
 
     <string name="empty_stock">The Stock Is Empty</string>
+
+    <string name="order_btn">Order</string>
+    <string name="sell_btn">Sell</string>
+
+    <string name="title_add">Add Item</string>
+    <string name="title_edit">Edit Item</string>
 </resources>

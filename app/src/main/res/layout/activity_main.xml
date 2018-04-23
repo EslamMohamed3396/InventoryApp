@@ -13,10 +13,6 @@
 
         <TextView
             style="@style/textStyleHeaderItem"
-            android:text="@string/itemId" />
-
-        <TextView
-            style="@style/textStyleHeaderItem"
             android:text="@string/itemName" />
 
         <TextView
@@ -26,15 +22,6 @@
         <TextView
             style="@style/textStyleHeaderItem"
             android:text="@string/itemQuantity" />
-
-        <TextView
-            style="@style/textStyleHeaderItem"
-            android:text="@string/SuppName" />
-
-        <TextView
-
-            style="@style/textStyleHeaderItem"
-            android:text="@string/SuppPhone" />
     </LinearLayout>
 
     <TextView

@@ -6,10 +6,6 @@
     android:padding="@dimen/padding_16">
 
     <TextView
-        android:id="@+id/item_id"
-        style="@style/textStyleListItem" />
-
-    <TextView
         android:id="@+id/item_name"
         style="@style/textStyleListItem" />
 
@@ -19,13 +15,5 @@
 
     <TextView
         android:id="@+id/item_quantity"
-        style="@style/textStyleListItem" />
-
-    <TextView
-        android:id="@+id/supp_name"
-        style="@style/textStyleListItem" />
-
-    <TextView
-        android:id="@+id/supp_phone"
         style="@style/textStyleListItem" />
 </LinearLayout>
