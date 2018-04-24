@@ -22,6 +22,8 @@
         <TextView
             style="@style/textStyleHeaderItem"
             android:text="@string/itemQuantity" />
+
+
     </LinearLayout>
 
     <TextView
@@ -35,7 +37,7 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layout" />
+        android:layout_below="@+id/layout"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Uri uri = ContentUris.withAppendedId(StockEntry.CONTENT_URI, id);
                 GoToaddingActivity.setData(uri);
                 startActivity(GoToaddingActivity);
+
             }
         });
 

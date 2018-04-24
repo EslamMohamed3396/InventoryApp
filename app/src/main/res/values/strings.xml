@@ -13,7 +13,14 @@
 
     <string name="order_btn">Order</string>
     <string name="sell_btn">Sell</string>
+    <string name="inc_btn">Add Quantity</string>
+    <string name="dec_btn">decrease Quantity</string>
 
     <string name="title_add">Add Item</string>
     <string name="title_edit">Edit Item</string>
+
+
+    <string name="delete_dialog_msg">Delete this Product ?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -72,9 +72,14 @@
             android:hint="@string/SuppPhone" />
 
         <Button
-            android:id="@+id/sell_btn"
+            android:id="@+id/add_btn"
             style="@style/btn_style"
-            android:text="@string/sell_btn" />
+            android:text="@string/inc_btn" />
+
+        <Button
+            android:id="@+id/decrease_btn"
+            style="@style/btn_style"
+            android:text="@string/dec_btn" />
     </LinearLayout>
 
 </LinearLayout>
